@@ -20,7 +20,7 @@ First of all, install ar_track_alvar. [Follow these steps](http://wiki.ros.org/a
 To download and use this package do: <br/>
 
 $ cd ~/catkin_ws/src <br/>
-$ git clone https://github.com/JuanjoRobotics ar_kinect_project.git <br/>
+$ git clone https://github.com/JuanjoRobotics/ar_kinect_project.git <br/>
 $ cd ~/catkin_ws <br/>
 $ catkin_make <br/>
 
@@ -50,5 +50,3 @@ We should see new topics with odometry (/OdometryRobot) and ground truth (/PoseR
 Ubuntu 16.04.7 https://releases.ubuntu.com/16.04/ <br/>
 ROS Kinetic http://wiki.ros.org/kinetic <br/>
 CoppeliaSim V4.1.0 https://www.coppeliarobotics.com/downloads <br/>
-
-Prueba de git
