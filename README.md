@@ -50,5 +50,3 @@ We should see new topics with odometry (/OdometryRobot) and ground truth (/PoseR
 Ubuntu 16.04.7 https://releases.ubuntu.com/16.04/ <br/>
 ROS Kinetic http://wiki.ros.org/kinetic <br/>
 CoppeliaSim V4.1.0 https://www.coppeliarobotics.com/downloads <br/>
-
-Prueba de git
