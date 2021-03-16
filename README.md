@@ -2,13 +2,19 @@
 A repository for my Degree Final Project (TFG), based on localization using ar_track_alvar. When this package reach it final version it should locate a robot using a kinect or a conventional RGB camera, helped by augmented reality tags. <br/>
 
 # Updates
-Version 1.0: first uploaded version. <br/>
+Version 1.0: first uploaded version. 08/03/2021 <br/> 
 - We have two operative CoppeliaSim scenes, one for simulating AR tags and sending kinect rgb/depth information to ROS and other one for sending ground truth and odometry of a robot to ROS.<br/>
 - There are nodes for manage CoppeliaSim data and show a coloured point cloud (in RVIZ, for example). This nodes also create TF data.<br/>
 - In this version we can't track using coloured pointcloud2 but it works using RGB data.<br/>
 
+Version 1.1: some extra nodes, corrections and rviz configuration. 16/03/2021 <br/>
+- Added two nodes, one for using track information to calculate tag position and other one for generating "tag0" frame.<br/>
+- Added one launch file that runs other nodes and starts rviz.<br/>
+- Added Rviz configuration<br/>
+
 # File layout
 * coppelia_scenes: Contains CoppeliaSim simulation scenes.
+* rviz_config: Contains rviz configuration file. 
 * launch: Contains launch files, such as tracking with/without kinect files and pointcloud2 generator file.
 * src: Contains all cpp files necessaries for tracking, transform data and move the robot.
 
@@ -44,6 +50,11 @@ $ rosrun ar_kinect_project random_direction <br/>
 $ rosrun ar_kinect_project ros_manager <br/>
 These lines will send random values to CoppeliaSim robot, moving it randomly. <br/>
 We should see new topics with odometry (/OdometryRobot) and ground truth (/PoseRobot) topics <br/>
+
+**Added after version 1.1** <br/>
+After starting coppeliaSim and opening one of kinect scenes do:<br/>
+$ roslaunch ar_kinect_project main.launch <br/>
+This line will open RVIZ, start alvar tracking and send transformation for tags and detected frames <br/>
 
 # System and Software used
 

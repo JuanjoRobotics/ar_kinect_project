@@ -7,7 +7,7 @@ void cmd_dirCallback(const std_msgs::String::ConstPtr & msg);
 
 int main (int argc, char **argv)
 {
-	ros::init(argc,argv,"manager");
+	ros::init(argc,argv,"ros_manager");
 	ros::NodeHandle n;
 	
 	ros::Subscriber sub=n.subscribe ("cmd_dir",1000,cmd_dirCallback);

@@ -12,7 +12,7 @@ int main (int argc, char** argv)
 	if (argc>1) strcpy(cadena,argv[1]);
 
 
-	ros::init(argc,argv,"direction");
+	ros::init(argc,argv,"random_direction");
 	ros::NodeHandle n;
 
 	ros::Publisher pub;

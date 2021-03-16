@@ -10,13 +10,17 @@ project(ar_kinect_project)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
-    geometry_msgs
+  geometry_msgs
   message_generation
-	rospy
+  rospy
   pcl_conversions
   pcl_ros
   sensor_msgs
   cv_bridge
+  ar_track_alvar_msgs
+  tf
+  tf2_ros
+
 )
 
 generate_messages(
@@ -49,5 +53,15 @@ target_link_libraries(float32_to_pointcloud2 ${catkin_LIBRARIES})
 add_executable (cloud_to_rgb src/cloud_to_rgb.cpp)
 target_link_libraries (cloud_to_rgb ${catkin_LIBRARIES})
 add_dependencies(cloud_to_rgb ${${PROJECT_NAME}_EXPORTED_TARGETS} 
+${catkin_EXPORTED_TARGETS})
+
+add_executable (track_pose src/track_pose.cpp)
+target_link_libraries (track_pose ${catkin_LIBRARIES})
+add_dependencies(track_pose ${${PROJECT_NAME}_EXPORTED_TARGETS} 
+${catkin_EXPORTED_TARGETS})
+
+add_executable (tag0_cast src/tag0_cast.cpp)
+target_link_libraries (tag0_cast ${catkin_LIBRARIES})
+add_dependencies(tag0_cast ${${PROJECT_NAME}_EXPORTED_TARGETS} 
 ${catkin_EXPORTED_TARGETS})
 
