@@ -6,7 +6,6 @@ Version 1.0: first uploaded version. 08/03/2021 <br/>
 - We have two operative CoppeliaSim scenes, one for simulating AR tags and sending kinect rgb/depth information to ROS and other one for sending ground truth and odometry of a robot to ROS.<br/>
 - There are nodes for manage CoppeliaSim data and show a coloured point cloud (in RVIZ, for example). This nodes also create TF data.<br/>
 - In this version we can't track using coloured pointcloud2 but it works using RGB data.<br/>
-
 Version 1.1: some extra nodes, corrections and rviz configuration. 16/03/2021 <br/><br/>
 - Added two nodes, one for using track information to calculate tag position and other one for generating "tag0" frame.<br/>
 - Added one launch file that runs other nodes and starts rviz.<br/>
