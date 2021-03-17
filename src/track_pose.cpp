@@ -15,9 +15,11 @@ void cmd_trackCallback(ar_track_alvar_msgs::AlvarMarkers req)
 {
       static tf2_ros::TransformBroadcaster br;
       geometry_msgs::TransformStamped transformStamped;
+
       double rotx,roty,rotz;
 	// check if we have any marker
       if (!req.markers.empty()) {
+	
 	// Get orientation
 	tf::Quaternion q(req.markers[0].pose.pose.orientation.x, req.markers[0].pose.pose.orientation.y, req.markers[0].pose.pose.orientation.z, req.markers[0].pose.pose.orientation.w);
 	tf::Matrix3x3 m(q);
@@ -37,11 +39,9 @@ void cmd_trackCallback(ar_track_alvar_msgs::AlvarMarkers req)
 	 transformStamped.transform.rotation.y = q.y();
 	 transformStamped.transform.rotation.z = q.z();
 	 transformStamped.transform.rotation.w = q.w();
-	 br.sendTransform(transformStamped);
-	 
+	 br.sendTransform(transformStamped);	 
 
-      }
-  
+      }  
 }
 
 int main (int argc, char **argv)
@@ -49,8 +49,6 @@ int main (int argc, char **argv)
         ros::init(argc,argv,"track_pose");
         ros::NodeHandle n;
         ros::Subscriber sub=n.subscribe ("ar_pose_marker",1000,cmd_trackCallback);
-        pub=n.advertise<geometry_msgs::Twist>("robot_tracked_pose",1000);
-
 	ros::spin(); // <--equivalente bucle infinito
 }
 
