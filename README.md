@@ -12,6 +12,11 @@ Version 1.1: some extra nodes, corrections and rviz configuration. 16/03/2021 <b
 - Added one launch file that runs other nodes and starts rviz.<br/>
 - Added Rviz configuration<br/>
 
+Version 1.1.2: Rviz and coppelia little changes and new node  <br/>
+- Resized tags y kinect_scene2
+- added transformer.cpp node for transforming tags and camera info to world
+- main.launch modified, now it also runs transformer.cpp
+
 # File layout
 * coppelia_scenes: Contains CoppeliaSim simulation scenes.
 * rviz_config: Contains rviz configuration file. 
@@ -55,6 +60,9 @@ We should see new topics with odometry (/OdometryRobot) and ground truth (/PoseR
 After starting coppeliaSim and opening one of kinect scenes do:<br/>
 $ roslaunch ar_kinect_project main.launch <br/>
 This line will open RVIZ, start alvar tracking and send transformation for tags and detected frames <br/>
+
+**Added after version 1.1.2** <br/>
+lines from before now let you see camera predicted position.
 
 # System and Software used
 
