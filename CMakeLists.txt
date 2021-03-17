@@ -65,3 +65,8 @@ target_link_libraries (tag0_cast ${catkin_LIBRARIES})
 add_dependencies(tag0_cast ${${PROJECT_NAME}_EXPORTED_TARGETS} 
 ${catkin_EXPORTED_TARGETS})
 
+add_executable (transformer src/transformer.cpp)
+target_link_libraries (transformer ${catkin_LIBRARIES})
+add_dependencies(transformer ${${PROJECT_NAME}_EXPORTED_TARGETS} 
+${catkin_EXPORTED_TARGETS})
+
