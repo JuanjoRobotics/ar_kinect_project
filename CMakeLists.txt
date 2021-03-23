@@ -60,9 +60,9 @@ target_link_libraries (track_pose ${catkin_LIBRARIES})
 add_dependencies(track_pose ${${PROJECT_NAME}_EXPORTED_TARGETS} 
 ${catkin_EXPORTED_TARGETS})
 
-add_executable (tag0_cast src/tag0_cast.cpp)
-target_link_libraries (tag0_cast ${catkin_LIBRARIES})
-add_dependencies(tag0_cast ${${PROJECT_NAME}_EXPORTED_TARGETS} 
+add_executable (tag_cast src/tag_cast.cpp)
+target_link_libraries (tag_cast ${catkin_LIBRARIES})
+add_dependencies(tag_cast ${${PROJECT_NAME}_EXPORTED_TARGETS} 
 ${catkin_EXPORTED_TARGETS})
 
 add_executable (transformer src/transformer.cpp)
