@@ -1,13 +1,12 @@
 <launch>
 
-	<arg name="open_rviz" default= "true" />
+	<arg name="open_rviz" default= "false" />
 
 	 <include file="$(find ar_kinect_project)/launch/track_no_kinect.launch" />
 	 <node pkg="ar_kinect_project" type="tag_cast" name="tag_cast" />
 	 <node pkg="ar_kinect_project" type="track_pose" name="track_pose" />
 	 <node pkg="ar_kinect_project" type="transformer" name="transformer" />
-
-
+	<node pkg="ar_kinect_project" type="particlefilter" name="particlefilter" />
 
 	<group if="$(arg open_rviz)">
        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find ar_kinect_project)/rviz_config/ar_kinect_rviz.rviz" />

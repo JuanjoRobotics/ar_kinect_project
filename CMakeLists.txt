@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   geometry_msgs
+  nav_msgs
+  random_numbers
   message_generation
   rospy
   pcl_conversions
@@ -68,5 +70,10 @@ ${catkin_EXPORTED_TARGETS})
 add_executable (transformer src/transformer.cpp)
 target_link_libraries (transformer ${catkin_LIBRARIES})
 add_dependencies(transformer ${${PROJECT_NAME}_EXPORTED_TARGETS} 
+${catkin_EXPORTED_TARGETS})
+
+add_executable (particlefilter src/particlefilter.cpp)
+target_link_libraries (particlefilter ${catkin_LIBRARIES})
+add_dependencies(particlefilter ${${PROJECT_NAME}_EXPORTED_TARGETS} 
 ${catkin_EXPORTED_TARGETS})
 

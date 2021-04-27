@@ -25,6 +25,6 @@
 	        <param name="height" type="int" value="$(arg height)" />
 	        <param name="width" type="int" value="$(arg width)" />	
 	</node>
-		
+	<node pkg="ar_kinect_project" type="cloud_to_rgb" name="cloud_to_rgb" />
 	
 </launch>

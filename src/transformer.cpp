@@ -17,7 +17,7 @@ int main(int argc, char** argv){
   ros::init(argc, argv, "transformer");
   ros::NodeHandle node;
   ros::Rate rate(10.0);
-  ros::Subscriber sub=node.subscribe ("detected_Id",1000,trackedIdCallback);
+  ros::Subscriber sub=node.subscribe ("detected_Id",100,trackedIdCallback);
   
   //tf initializations 
   geometry_msgs::TransformStamped transformStamped;
@@ -27,6 +27,11 @@ int main(int argc, char** argv){
   tf::StampedTransform transform_tag1world;
   tf::StampedTransform transform_tag2world;
   tf::StampedTransform transform_tag3world;
+  tf::StampedTransform transform_tag4world;
+  tf::StampedTransform transform_tag5world;
+  tf::StampedTransform transform_tag6world;
+  tf::StampedTransform transform_tag7world;
+  tf::StampedTransform transform_tag8world;
   tf::Transform transform_worldcamera;
   
   while (node.ok()){
@@ -37,6 +42,11 @@ int main(int argc, char** argv){
       listener.lookupTransform("world", "tag1", ros::Time(0), transform_tag1world);
       listener.lookupTransform("world", "tag2", ros::Time(0), transform_tag2world);
       listener.lookupTransform("world", "tag3", ros::Time(0), transform_tag3world);
+      listener.lookupTransform("world", "tag4", ros::Time(0), transform_tag4world);
+      listener.lookupTransform("world", "tag5", ros::Time(0), transform_tag5world);
+      listener.lookupTransform("world", "tag6", ros::Time(0), transform_tag6world);
+      listener.lookupTransform("world", "tag7", ros::Time(0), transform_tag7world);
+      listener.lookupTransform("world", "tag8", ros::Time(0), transform_tag8world);
     }   
     catch (tf::TransformException ex){
       ROS_ERROR("%s",ex.what());
@@ -54,6 +64,23 @@ int main(int argc, char** argv){
     else if (tracked_frame == 7){
        transform_worldcamera = transform_tag3world*transform;
     }
+    else if (tracked_frame == 4){
+       transform_worldcamera = transform_tag4world*transform;
+    }
+    else if (tracked_frame == 14){
+       transform_worldcamera = transform_tag5world*transform;
+    }
+    else if (tracked_frame == 9){
+       transform_worldcamera = transform_tag6world*transform;
+    }
+    else if (tracked_frame == 3){
+       transform_worldcamera = transform_tag7world*transform;
+    }
+    else if (tracked_frame == 12){
+       transform_worldcamera = transform_tag8world*transform;
+    }
+    
+    if (tracked_frame != 0){
 	// Sending the transform of estimated camera position to world frame
 	transformStamped.header.stamp = ros::Time::now();
 	transformStamped.header.frame_id = "world";
@@ -65,8 +92,9 @@ int main(int argc, char** argv){
 	transformStamped.transform.rotation.y = transform_worldcamera.getRotation().z();
 	transformStamped.transform.rotation.z = transform_worldcamera.getRotation().y();
 	transformStamped.transform.rotation.w = transform_worldcamera.getRotation().x();
-	br.sendTransform(transformStamped);	 	
-     
+	br.sendTransform(transformStamped);
+	tracked_frame = 0;
+    }
 	ros::spinOnce();
 	rate.sleep();
   }

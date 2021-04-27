@@ -3,14 +3,6 @@
 
 int main (int argc, char** argv)
 {
-    char cadena[]="Hello ROS";
-    printf("I've got %d parameters\n  ",argc);
-
-    for (int i=0; i<argc;i++)
-	printf("param [%d]=%s\n",i,argv[i]);
-
-    if (argc>1) strcpy(cadena,argv[1]);
-
 
     ros::init(argc,argv,"random_direction");
     ros::NodeHandle n;
@@ -19,7 +11,6 @@ int main (int argc, char** argv)
     pub = n.advertise<std_msgs::String>("cmd_dir",1000);
 
     ros::Rate loop_rate(0.5);
-    srand(time(0));
     unsigned dir=0;
     std_msgs::String msg;
     std::string ss;
@@ -41,8 +32,12 @@ int main (int argc, char** argv)
 	
 	ROS_INFO("%d ---> %s\n",dir,msg.data.c_str()); 
 		
-	pub.publish(msg);
-
+	
+	ros::Time timer = ros::Time::now();
+	int secs = timer.toSec();
+ 
+	  pub.publish(msg);
+	
 	loop_rate.sleep(); 
     }
     return 1;
