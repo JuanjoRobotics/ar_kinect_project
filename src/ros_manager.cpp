@@ -3,7 +3,7 @@
 #include "geometry_msgs/Twist.h"
 
 ros::Publisher pub;
-
+// comentario de prueba
 void cmd_dirCallback(const std_msgs::String::ConstPtr & msg)
 {
         ROS_INFO("Received the direction [%s]\n",msg->data.c_str());
